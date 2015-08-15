@@ -15,7 +15,7 @@ module.exports = {
   },
 
   'styles': {
-    'src': './app/styles/**/*.css',
+    'src': './bower_components/bootstrap/dist/css/**/*.css',
     'dest': './build/css/'
   },
 
