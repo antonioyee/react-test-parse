@@ -36,21 +36,23 @@ var App = React.createClass({
     CurrentUserActions.checkLoginStatus();
   },
 
-  render() {
-    return (
-      <div>
+    render() {
+        return (
+            <div>
 
-        <Header />
+                <Header />
 
-        <RouteHandler params={this.props.params}
-                      query={this.props.query}
-                      currentUser={this.state.currentUser} />
+                <div className="container">
 
-        <Footer />
+                    <RouteHandler params={this.props.params} query={this.props.query} currentUser={this.state.currentUser} />
 
-      </div>
-    );
-  }
+                    <hr></hr>
+                    <Footer />
+
+                </div>
+            </div>
+        );
+    }
 
 });
 
