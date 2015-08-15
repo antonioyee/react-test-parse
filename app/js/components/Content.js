@@ -15,10 +15,7 @@ var Content = React.createClass({
         <DocumentTitle title="Home">
             <section className="home-page">
                 <div className="container">
-                    <span className="lead">Home</span>
-                    <div>
-                        <Link to="Search">Search</Link>
-                    </div>
+                    
                 </div>
             </section>
         </DocumentTitle>
