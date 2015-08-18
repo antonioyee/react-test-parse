@@ -1,9 +1,18 @@
 'use strict';
 
 import React from 'react/addons';
+import _                from 'lodash';
 
 var Header = React.createClass({
     render() {
+
+        if ( _.isEmpty(localStorage.getItem('key')) ) {
+            var login = <a href="login" className="btn btn-info" style={{'margin-right':'5px'}}>Login</a>
+            var register = <a href="register" className="btn btn-success">Register</a>
+        }else{
+            var logout = <a href="logout" className="btn btn-danger" style={{'margin-right':'5px'}}>Logout</a>
+        }
+
         return (
             <nav className="navbar navbar-inverse navbar-fixed-top">
                 <div className="container">
@@ -18,8 +27,9 @@ var Header = React.createClass({
                     </div>
                     <div id="navbar" className="navbar-collapse collapse">
                         <form className="navbar-form navbar-right">
-                            <a href="login" className="btn btn-info" style={{'margin-right':'5px'}}>Login</a>
-                            <a href="register" className="btn btn-success">Register</a>
+                            {login}
+                            {register}
+                            {logout}
                         </form>
                     </div>
                 </div>
