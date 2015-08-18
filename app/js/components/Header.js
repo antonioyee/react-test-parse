@@ -18,7 +18,7 @@ var Header = React.createClass({
                     </div>
                     <div id="navbar" className="navbar-collapse collapse">
                         <form className="navbar-form navbar-right">
-                            <a href="" className="btn btn-info" style={{'margin-right':'5px'}}>Login</a>
+                            <a href="login" className="btn btn-info" style={{'margin-right':'5px'}}>Login</a>
                             <a href="register" className="btn btn-success">Register</a>
                         </form>
                     </div>
