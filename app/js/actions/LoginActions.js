@@ -16,19 +16,21 @@ class LoginActions {
             contentType: "application/json",
             type: 'GET',
             url: 'https://api.parse.com/1/classes/users?where=' + JSON.stringify(data),
-            headers: { 'X-Parse-Application-Id': key.applicationid, 'X-Parse-REST-API-Key': key.restapi },
-            success: function(data) {
-                toastr.success('code user: ' + data.objectId + ', created ' + data.createdAt, 'User Register');
-            },
-            error: function(data){
-                toastr.error('error ' + data.status + ': ' + data.responseText, 'Error');
-            }
+            headers: { 'X-Parse-Application-Id': key.applicationid, 'X-Parse-REST-API-Key': key.restapi }
         })
         .done((data) => {
-            this.actions.addCharacterSuccess(data.message);
-        })
-        .fail((jqXhr) => {
-            this.actions.addCharacterFail(jqXhr.responseJSON.message);
+            if ( data.results.length > 0 ) {
+
+                localStorage.setItem('key', data.results[0].objectId);
+                localStorage.setItem('user', data.results[0].email);
+                localStorage.setItem('email', data.results[0].email);
+                localStorage.setItem('createdAt', data.results[0].createdAt);
+                localStorage.setItem('updatedAt', data.results[0].updatedAt);
+
+                toastr.success('Logged On', 'Welcome');
+            }else{
+                toastr.error('error: No results found', 'Error');
+            }
         });
     }
 
