@@ -41,7 +41,7 @@
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.6",
     "humps": "^0.6.0",
-    "lodash": "^3.10.0",
+    "lodash": "^3.10.1",
     "morgan": "^1.6.1",
     "node-parse-api": "^0.3.7",
     "parse": "^1.5.0",
