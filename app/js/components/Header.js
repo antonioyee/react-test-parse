@@ -4,13 +4,23 @@ import React from 'react/addons';
 import _                from 'lodash';
 
 var Header = React.createClass({
+
+    onLogout(event){
+        event.preventDefault();
+        localStorage.removeItem('key');
+        localStorage.removeItem('user');
+        localStorage.removeItem('email');
+        localStorage.removeItem('createdAt');
+        localStorage.removeItem('updatedAt');
+    },
+
     render() {
 
         if ( _.isEmpty(localStorage.getItem('key')) ) {
             var login = <a href="login" className="btn btn-info" style={{'margin-right':'5px'}}>Login</a>
             var register = <a href="register" className="btn btn-success">Register</a>
         }else{
-            var logout = <a href="logout" className="btn btn-danger" style={{'margin-right':'5px'}}>Logout</a>
+            var logout = <a onClick={this.onLogout.bind()} className="btn btn-danger" style={{'margin-right':'5px'}}>Logout</a>
         }
 
         return (
