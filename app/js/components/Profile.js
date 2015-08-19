@@ -16,6 +16,9 @@ var Profile = React.createClass({
                 <section className="search-page">
                     <div className="container">
                         <h3>Profile</h3>
+
+                        <h4>Name <small>{localStorage.getItem('email')}</small></h4>
+                        <h4>Email <small>{localStorage.getItem('email')}</small></h4>
                     </div>
                 </section>
             </DocumentTitle>
