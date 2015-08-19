@@ -44,7 +44,6 @@ var Login = React.createClass({
         var email = this.state.value;
         if ( email ) {
             LoginActions.loginUser(email);
-            this.transitionTo('/');
         }
     },
 
