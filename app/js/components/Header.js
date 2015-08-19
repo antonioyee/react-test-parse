@@ -8,22 +8,32 @@ var Header = React.createClass({
 
     mixins: [Navigation],
 
+    onLogin(event){
+        event.preventDefault();
+        this.transitionTo('/login');
+    },
+
+    onRegister(event){
+        event.preventDefault();
+        this.transitionTo('/register');
+    },
+
     onLogout(event){
         event.preventDefault();
 
         localStorage.removeItem('key');
-        localStorage.removeItem('user');
+        localStorage.removeItem('user')
         localStorage.removeItem('email');
         localStorage.removeItem('createdAt');
         localStorage.removeItem('updatedAt');
-        this.transitionTo('/');
+        this.transitionTo('/login');
     },
 
     render() {
 
         if ( _.isEmpty(localStorage.getItem('key')) ) {
-            var login = <a href="login" className="btn btn-info" style={{'margin-right':'5px'}}>Login</a>
-            var register = <a href="register" className="btn btn-success">Register</a>
+            var login = <a onClick={this.onLogin.bind()} className="btn btn-info" style={{'margin-right':'5px'}}>Login</a>
+            var register = <a onClick={this.onRegister.bind()} className="btn btn-success">Register</a>
         }else{
             var logout = <a onClick={this.onLogout.bind()} className="btn btn-danger" style={{'margin-right':'5px'}}>Logout</a>
         }
@@ -41,10 +51,18 @@ var Header = React.createClass({
                         <a className="navbar-brand" onClick={()=>this.transitionTo('/')}>React and Parse</a>
                     </div>
                     <div id="navbar" className="navbar-collapse collapse">
+
+                        <ul className="nav navbar-nav">
+                            <li><a href="profile">{localStorage.getItem('email') ? 'USER: ' + localStorage.getItem('email') : ''}</a></li>
+                        </ul>
+
                         <form className="navbar-form navbar-right">
-                            {login}
-                            {register}
-                            {logout}
+
+                            {localStorage.getItem('email') ? '' : login }
+
+                            {localStorage.getItem('email') ? '' : register }
+
+                            {localStorage.getItem('email') ? logout : ''}
                         </form>
                     </div>
                 </div>

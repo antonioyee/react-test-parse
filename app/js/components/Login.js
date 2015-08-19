@@ -3,15 +3,25 @@
 import React         from 'react/addons';
 import {Link}        from 'react-router';
 import DocumentTitle from 'react-document-title';
+import _             from 'lodash';
 
 import LoginStore from '../stores/LoginStore';
 import LoginActions from '../actions/LoginActions';
+
+var Navigation = require('react-router').Navigation;
+var AuthenticatedRouteMixin = require('../mixins/AuthenticatedRouteMixin');
 
 var Login = React.createClass({
     getInitialState() {
         return (
             { value : '', setState : LoginStore.getState() }
         );
+    },
+
+    mixins: [AuthenticatedRouteMixin],
+
+    contextTypes: {
+        router: React.PropTypes.func
     },
 
     componentDidMount(){
@@ -34,8 +44,10 @@ var Login = React.createClass({
         var email = this.state.value;
         if ( email ) {
             LoginActions.loginUser(email);
+            return;
         }
     },
+
     render(){
         return (
             <DocumentTitle title="Login">

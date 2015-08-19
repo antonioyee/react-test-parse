@@ -10,8 +10,8 @@ var AuthenticatedRouteMixin = {
   mixins: [Navigation],
 
   _checkIfRedirect() {
-    if ( _.isEmpty(CurrentUserStore.user) && CurrentUserStore.hasBeenChecked && this.isMounted() ) {
-      this.replaceWith('Home');
+    if ( _.isEmpty(localStorage.getItem('key')) ) {
+      this.replaceWith('/login');
     }
   },
 
