@@ -11,8 +11,6 @@ var AuthenticatedRouteMixin = {
     _checkIfRedirect() {
         if ( _.isEmpty(localStorage.getItem('key')) ) {
             this.transitionTo('/login');
-        }else{
-            this.transitionTo('/profile');
         }
     },
 
