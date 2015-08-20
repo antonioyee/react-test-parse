@@ -1,8 +1,10 @@
 'use strict';
 
-import React from 'react/addons';
+import React        from 'react/addons';
+import {Link}       from 'react-router';
+import _            from 'lodash';
+
 var Navigation = require('react-router').Navigation;
-import _                from 'lodash';
 
 var Header = React.createClass({
 
@@ -35,6 +37,7 @@ var Header = React.createClass({
             var login = <a onClick={this.onLogin.bind()} className="btn btn-info" style={{'margin-right':'5px'}}>Login</a>
             var register = <a onClick={this.onRegister.bind()} className="btn btn-success">Register</a>
         }else{
+            var tweet = <Link to="Tweet">Tweet</Link>
             var logout = <a onClick={this.onLogout.bind()} className="btn btn-danger" style={{'margin-right':'5px'}}>Logout</a>
         }
 
@@ -54,6 +57,7 @@ var Header = React.createClass({
 
                         <ul className="nav navbar-nav">
                             <li><a href="profile">{localStorage.getItem('email') ? 'USER: ' + localStorage.getItem('email') : ''}</a></li>
+                            <li>{localStorage.getItem('email') ? tweet : ''}</li>
                         </ul>
 
                         <form className="navbar-form navbar-right">

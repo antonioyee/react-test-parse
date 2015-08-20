@@ -8,6 +8,7 @@ import Content      from './components/Content';
 import Register     from './components/Register';
 import Login        from './components/Login';
 import Profile      from './components/Profile';
+import Tweet        from './components/Tweet';
 import NotFound     from './components/NotFound';
 
 export default (
@@ -19,6 +20,7 @@ export default (
         <Route name='Register' path='/register' handler={Register} />
         <Route name='Login' path='/login' handler={Login} />
         <Route name="Profile" path='/profile' handler={Profile} />
+        <Route name="Tweet" path="/tweet" handler={Tweet} />
 
         <NotFoundRoute handler={NotFound} />
 
