@@ -43,7 +43,11 @@ var AllMyPosts = React.createClass({
                         </div>
             });
         }else{
-            var listAllMyPosts = '';
+            var listAllMyPosts = <div className="col-sm-12">
+                                    <div className="well">
+                                        <p>You have an empty timeline</p>
+                                    </div>
+                                </div>
         }
 
         return (
