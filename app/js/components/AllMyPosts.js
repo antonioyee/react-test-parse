@@ -32,42 +32,27 @@ var AllMyPosts = React.createClass({
     },
 
     render: function () {
-
         if ( this.state.myTweets.length > 0 ) {
-            console.log(this.state.myTweets);
+            var listAllMyPosts = this.state.myTweets.map(function(post, index) {
+                return <div className="col-sm-12">
+                            <div className="thumbnail">
+                                <div className="caption">
+                                    <p>{post.tweet}</p>
+                                </div>
+                            </div>
+                        </div>
+            });
+        }else{
+            var listAllMyPosts = '';
         }
 
         return (
             <DocumentTitle title="All My Posts">
                 <section className="search-page">
                     <div className="container">
-
                         <div className="row">
-                            <div className="col-sm-12">
-                                <div className="thumbnail">
-                                    <div className="caption">
-                                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-sm-12">
-                                <div className="thumbnail">
-                                    <div className="caption">
-                                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="col-sm-12">
-                                <div className="thumbnail">
-                                    <div className="caption">
-                                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    </div>
-                                </div>
-                            </div>
+                            {listAllMyPosts}
                         </div>
-
                     </div>
                 </section>
             </DocumentTitle>
