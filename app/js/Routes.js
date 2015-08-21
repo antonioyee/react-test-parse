@@ -22,7 +22,7 @@ export default (
         <Route name='Login' path='/login' handler={Login} />
         <Route name='Profile' path='/profile' handler={Profile} />
         <Route name='Tweet' path='/tweet' handler={Tweet} />
-        <Route name='AllMyPosts' path='/allmyposts' handler={AllMyPosts} />
+        <Route name='AllMyPosts' path='/all-my-posts' handler={AllMyPosts} />
 
         <NotFoundRoute handler={NotFound} />
 
