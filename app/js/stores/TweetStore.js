@@ -5,12 +5,9 @@ import TweetActions from '../actions/TweetActions';
 
 var key             =  require('../config/keys.json');
 
-var CurrentUserStore = Reflux.createStore({
+var TweetStore = Reflux.createStore({
 
     init() {
-        this.user = null;
-        this.hasBeenChecked = false;
-
         this.listenTo(TweetActions.postTweetUser, this.postTweetUser);
         this.listenTo(TweetActions.tweetPostSuccess, this.tweetPostSuccess);
         this.listenTo(TweetActions.tweetPostFail, this.tweetPostFail);
@@ -30,7 +27,7 @@ var CurrentUserStore = Reflux.createStore({
             headers: { 'X-Parse-Application-Id': key.applicationid, 'X-Parse-REST-API-Key': key.restapi }
         })
         .done((data) => {
-            this.tweetPostSuccess(data.objectId, data.createdAt);
+            return this.tweetPostSuccess(data.objectId, data.createdAt);
         })
         .fail((jqXhr) => {
             this.tweetPostFail(jqXhr.responseJSON.message);
@@ -39,6 +36,7 @@ var CurrentUserStore = Reflux.createStore({
 
     tweetPostSuccess(objectId, createdAt){
         toastr.success('code user: ' + objectId + ', created ' + createdAt, 'User Register');
+        return true;
     },
 
     tweetPostFail(msj){
@@ -47,4 +45,4 @@ var CurrentUserStore = Reflux.createStore({
 
 });
 
-export default CurrentUserStore;
+export default TweetStore;

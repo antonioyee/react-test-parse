@@ -31,7 +31,9 @@ var Tweet = React.createClass({
         event.preventDefault();
         var tweet = this.state.text;
         if ( tweet ) {
-            TweetActions.postTweetUser(tweet);
+            if ( TweetActions.postTweetUser(tweet) ){
+                this.transitionTo('/profile');
+            }
         }
     },
 
