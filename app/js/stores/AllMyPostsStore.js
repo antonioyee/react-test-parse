@@ -27,8 +27,11 @@ var AllMyPostsStore = Reflux.createStore({
         if ( this.tweets ) {
             this.setMyTweets(this.tweets, cb);
         }else{
+            var data = {};
+                data.usersId = localStorage.getItem('key');
+
             $.ajax({
-                url: 'https://api.parse.com/1/classes/post',
+                url: 'https://api.parse.com/1/classes/post?where=' + JSON.stringify(data),
                 dataType: 'json',
                 contentType: "application/json",
                 type: 'GET',
