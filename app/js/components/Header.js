@@ -38,6 +38,7 @@ var Header = React.createClass({
             var register = <a onClick={this.onRegister.bind()} className="btn btn-success">Register</a>
         }else{
             var tweet = <Link to="Tweet">Tweet</Link>
+            var allmyposts = <Link to="AllMyPosts">All My Posts</Link>
             var logout = <a onClick={this.onLogout.bind()} className="btn btn-danger" style={{'margin-right':'5px'}}>Logout</a>
         }
 
@@ -58,6 +59,7 @@ var Header = React.createClass({
                         <ul className="nav navbar-nav">
                             <li><a href="profile">{localStorage.getItem('email') ? 'USER: ' + localStorage.getItem('email') : ''}</a></li>
                             <li>{localStorage.getItem('email') ? tweet : ''}</li>
+                            <li>{ localStorage.getItem('email') ? allmyposts : '' }</li>
                         </ul>
 
                         <form className="navbar-form navbar-right">
