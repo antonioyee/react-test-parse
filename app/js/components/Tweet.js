@@ -32,7 +32,7 @@ var Tweet = React.createClass({
         var tweet = this.state.text;
         if ( tweet ) {
             if ( TweetActions.postTweetUser(tweet) ){
-                this.transitionTo('/profile');
+                this.transitionTo('/all-my-posts');
             }
         }
     },

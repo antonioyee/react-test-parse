@@ -24,14 +24,14 @@ var AllMyPostsStore = Reflux.createStore({
     },
 
     ListAllMyPosts(cb = function(){}){
-        if ( this.tweets ) {
+        /*if ( this.tweets ) {
             this.setMyTweets(this.tweets, cb);
-        }else{
+        }else{*/
             var data = {};
                 data.usersId = localStorage.getItem('key');
 
             $.ajax({
-                url: 'https://api.parse.com/1/classes/post?where=' + JSON.stringify(data),
+                url: 'https://api.parse.com/1/classes/post?where=' + JSON.stringify(data) + '&order=-createdAt',
                 dataType: 'json',
                 contentType: "application/json",
                 type: 'GET',
@@ -43,7 +43,7 @@ var AllMyPostsStore = Reflux.createStore({
             .fail((jqXhr) => {
                 this.throwError(data, cb);
             });
-        }
+        //}
     },
 
 });
