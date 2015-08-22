@@ -9,6 +9,7 @@ class RegisterActions {
 
     addCharacter(email){
         var data = {};
+            data.name = email;
             data.email = email;
 
         $.ajax({

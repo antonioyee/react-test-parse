@@ -28,8 +28,17 @@ var AllMyPostsStore = Reflux.createStore({
         /*if ( this.tweets ) {
             this.setMyTweets(this.tweets, cb);
         }else{*/
-            var data = {};
-                data.usersId = localStorage.getItem('key');
+            /*var data = {};
+                data.usersId = localStorage.getItem('key');*/
+
+                var data = {
+                    "usersId" :
+                        {
+                            "__type" : "Pointer",
+                            "className" : "users",
+                            "objectId" : localStorage.getItem('key')
+                        }
+                    };
 
             $.ajax({
                 url: 'https://api.parse.com/1/classes/post?where=' + JSON.stringify(data) + '&order=-createdAt',

@@ -28,7 +28,7 @@ class LoginActions {
                 localStorage.setItem('updatedAt', data.results[0].updatedAt);
 
                 toastr.success('Logged On', 'Welcome');
-                window.location.href = "http://localhost:3001/profile";
+                window.location.href = "http://localhost:3001/";
             }else{
                 toastr.error('error: No results found', 'Error');
             }

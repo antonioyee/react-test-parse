@@ -14,9 +14,14 @@ var TweetStore = Reflux.createStore({
     },
 
     postTweetUser(tweet){
-        var data = {};
-            data.tweet = tweet;
-            data.usersId = localStorage.getItem('key');
+        var data = {
+            "tweet" : tweet,
+            "usersId" :{
+                "__type" : "Pointer",
+                "className" : "users",
+                "objectId" : localStorage.getItem('key')
+            }
+        };
 
         $.ajax({
             dataType: 'json',
