@@ -35,7 +35,7 @@ var TweetStore = Reflux.createStore({
     },
 
     tweetPostSuccess(objectId, createdAt){
-        toastr.success('code user: ' + objectId + ', created ' + createdAt, 'User Register');
+        toastr.success('Tweet Send');
         return true;
     },
 
