@@ -4,7 +4,7 @@ import Reflux from 'reflux';
 
 var AllMyPostsActions = Reflux.createActions([
     'ListAllMyPosts',
-    'arreglo'
+    'RemoveTweet'
 ]);
 
 export default AllMyPostsActions;

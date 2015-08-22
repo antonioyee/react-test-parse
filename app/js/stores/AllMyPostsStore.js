@@ -9,7 +9,8 @@ var AllMyPostsStore = Reflux.createStore({
 
     init() {
         this.tweets = null;
-        this.listenTo(AllMyPostsActions.ListAllMyPosts, this.ListAllMyPosts);
+        this.listenTo(AllMyPostsActions.ListAllMyPosts, this.onListAllMyPosts);
+        this.listenTo(AllMyPostsActions.RemoveTweet, this.onRemoveTweet);
     },
 
     setMyTweets( tweets, cb = function(){} ) {
@@ -23,7 +24,7 @@ var AllMyPostsStore = Reflux.createStore({
         this.trigger(err);
     },
 
-    ListAllMyPosts(cb = function(){}){
+    onListAllMyPosts(cb = function(){}){
         /*if ( this.tweets ) {
             this.setMyTweets(this.tweets, cb);
         }else{*/
@@ -44,6 +45,25 @@ var AllMyPostsStore = Reflux.createStore({
                 this.throwError(data, cb);
             });
         //}
+    },
+
+    onRemoveTweet(objectId) {
+        $.ajax({
+            url: 'https://api.parse.com/1/classes/post/' + objectId,
+            dataType: 'json',
+            contentType: "application/json",
+            type: 'DELETE',
+            headers: { 'X-Parse-Application-Id': key.applicationid, 'X-Parse-REST-API-Key': key.restapi },
+            success: function(data) {
+                toastr.success('Tweet Delete', 'Success');
+            },
+            error: function(data){
+                toastr.error(data.responseJSON.error, 'Error');
+            }
+        })
+        .done((data) => {
+            this.onListAllMyPosts();
+        });
     },
 
 });

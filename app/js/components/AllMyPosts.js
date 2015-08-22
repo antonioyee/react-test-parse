@@ -1,10 +1,11 @@
 'use strict';
 
 import React                from 'react/addons';
-import {ListenerMixin}    from 'reflux';
+import {ListenerMixin}      from 'reflux';
 import DocumentTitle        from 'react-document-title';
 import AllMyPostsActions    from '../actions/AllMyPostsActions';
 import AllMyPostsStore      from '../stores/AllMyPostsStore';
+import ItemTweet            from './ItemTweet';
 
 var AuthenticatedRouteMixin = require('../mixins/AuthenticatedRouteMixin');
 
@@ -33,14 +34,8 @@ var AllMyPosts = React.createClass({
 
     render: function () {
         if ( this.state.myTweets.length > 0 ) {
-            var listAllMyPosts = this.state.myTweets.map(function(post, index) {
-                return <div className="col-sm-12">
-                            <div className="thumbnail">
-                                <div className="caption">
-                                    <p>{post.tweet}</p>
-                                </div>
-                            </div>
-                        </div>
+            var listAllMyPosts = this.state.myTweets.map(function(item, index) {
+                return <ItemTweet key={item.objectId} data={item} />
             });
         }else{
             var listAllMyPosts = <div className="col-sm-12">
