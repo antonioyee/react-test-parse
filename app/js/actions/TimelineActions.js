@@ -3,7 +3,9 @@
 import Reflux from 'reflux';
 
 var TimelineActions = Reflux.createActions([
-    'ListAllMyTimeline'
+    'ListAllMyTimeline',
+    'LikeClick',
+    'PostLikes'
 ]);
 
 export default TimelineActions;

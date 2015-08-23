@@ -41,7 +41,7 @@ var Content = React.createClass({
 
         if ( this.state.myTimeline.length > 0 ) {
             var mytimeline = this.state.myTimeline.map(function(item, index) {
-                return <RowsTimeline key={item.objectId} data={item} />
+                return <RowsTimeline key={item.objectId} tweetId={item.objectId} data={item} />
             });
         }else{
             var mytimeline = <div className="col-sm-12">
