@@ -33,7 +33,7 @@ var Content = React.createClass({
         TimelineActions.ListAllMyTimeline();
     },
 
-    render() {
+    render: function() {
 
         if ( this.state.myTimeline.length > 0 ) {
             var mytimeline = this.state.myTimeline.map(function(item, index) {
