@@ -65,7 +65,13 @@ var TimelineStore = Reflux.createStore({
             type: 'POST',
             url: 'https://api.parse.com/1/classes/like',
             data: JSON.stringify(data),
-            headers: { 'X-Parse-Application-Id': key.applicationid, 'X-Parse-REST-API-Key': key.restapi }
+            headers: { 'X-Parse-Application-Id': key.applicationid, 'X-Parse-REST-API-Key': key.restapi },
+            success: function(data) {
+                toastr.success('Tweet Like', 'Success');
+            },
+            error: function(data){
+                toastr.error(data.responseJSON.error, 'Error');
+            }
         })
         .done((data) => {
             this.onListAllMyTimeline();

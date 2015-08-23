@@ -14,10 +14,6 @@ var Content = React.createClass({
 
     mixins: [AuthenticatedRouteMixin, ListenerMixin],
 
-    propTypes: {
-        currentUser: React.PropTypes.object.isRequired
-    },
-
     getInitialState() {
         return {
             myTimeline: {}
